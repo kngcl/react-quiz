@@ -13,7 +13,9 @@ export default function Home() {
           can help build the perfect quiz for your business.
         </p>
         <Link to="/Quiz">
-          <button type="submit">Get Started</button>
+          <button type="submit" className="tell">
+            Get Started
+          </button>
         </Link>
       </div>
     </div>
