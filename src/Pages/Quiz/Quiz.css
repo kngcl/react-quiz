@@ -22,6 +22,12 @@ input[type='radio'] {
   border: 0.1rem solid #fff;
   border-radius: 100%;
   cursor: pointer;
+  padding: 1rem 5rem;
+  background: #282c34;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: larger;
 }
 
 .next:hover {
@@ -36,5 +42,17 @@ input[type='radio'] {
 
 .Nest_Button {
   margin-left: 500px;
+  cursor: pointer;
+  padding: 1rem 5rem;
+  background: #282c34;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: larger;
+  border-radius: 5px;
 }
 
+/* .boolean {
+  display: flex;
+gap: 10px;
+} */

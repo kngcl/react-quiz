@@ -1,29 +1,27 @@
-/* eslint-disable react/button-has-type */
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+/* eslint-disable prefer-destructuring */
+import { useContext, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import QuizContext from '../../Context/Context';
 import './Quiz.css';
 
-// eslint-disable-next-line react/prop-types
-export default function Quiz({ path, PageNum }) {
-  const [posts, setPosts] = useState([]);
-  const [count, setCount] = useState(0);
-  const fetchPost = async () => {
-    const response = await fetch(
-      ' https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean'
-    );
-    const data = await response.json();
-    setPosts([...data.results]);
-  };
-  useEffect(() => {
-    fetchPost();
-  }, []);
+export default function Quiz() {
+  const { posts, count, setCount } = useContext(QuizContext);
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const page = +id;
 
+  useEffect(() => {
+    if (!posts[page]) {
+      navigate('/');
+    }
+  }, []);
   const handleClick = (e) => {
-    if (e.target.value === posts[PageNum].correct_answer) {
+    const value = e.target.value;
+    if (value === posts[page].correct_answer) {
       setCount(count + 1);
       console.log(`${count}`);
     } else {
-      console.log('in correct answer');
+      console.log(value);
     }
   };
 
@@ -32,18 +30,18 @@ export default function Quiz({ path, PageNum }) {
       <div className="App toll">
         <div className="toll">
           <p>point:{count}</p>
-          <h1>Question {PageNum}</h1>
-          <h2>Category:{posts[PageNum].category}</h2>
-          <p> {posts[PageNum].question.replace(/([^\w ]|_)/g, '')}</p>
-          <div>
+          <h1>Question {page}</h1>
+          <h2>Category:{posts[page].category}</h2>
+          <p> {posts[page].question.replace(/([^\w ]|_)/g, '')}</p>
+          <div className="boolean">
             <div className="next_radio">
               <button
                 type="button"
                 className="next"
-                value={posts[PageNum].incorrect_answers}
-                onClick={handleClick}
+                value="True"
+                onClick={(e) => handleClick(e, 'value')}
               >
-                <b>{posts[PageNum].incorrect_answers}</b>
+                <b>True</b>
               </button>
             </div>
             <br />
@@ -51,19 +49,21 @@ export default function Quiz({ path, PageNum }) {
               <button
                 type="button"
                 className="next"
-                value={posts[PageNum].correct_answer}
-                onClick={handleClick}
+                value="False"
+                onClick={(e) => handleClick(e, 'value')}
               >
-                <b>{posts[PageNum].correct_answer}</b>
+                <b>False</b>
               </button>
             </div>
           </div>
         </div>
-        <Link to={path}>
-          <button type="submit" className="Nest_Button">
-            Next
-          </button>
-        </Link>
+        <button
+          type="submit"
+          className="Nest_Button"
+          onClick={() => navigate(page >= 10 ? '/Result' : `/quiz/${page + 1}`)}
+        >
+          Next
+        </button>
       </div>
     )
   );

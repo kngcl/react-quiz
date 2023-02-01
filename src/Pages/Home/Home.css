@@ -26,7 +26,7 @@ body {
   min-height: 600px;
 }
 
-button {
+.tell {
   padding: 1rem 5rem;
   background: #282c34;
   color: #fff;
@@ -35,7 +35,7 @@ button {
   cursor: pointer;
   font-size: larger;
 }
- button:hover {
+ .tell:hover {
     box-shadow: 2px 2px 2px  #fff;;
  }
 
