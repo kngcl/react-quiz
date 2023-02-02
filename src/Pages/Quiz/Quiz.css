@@ -17,7 +17,8 @@ input[type='radio'] {
   padding: 1rem;
 }
 
-.next {
+.Question__btn1,
+.Question__btn2 {
   appearance: none;
   border: 0.1rem solid #fff;
   border-radius: 100%;
@@ -30,15 +31,17 @@ input[type='radio'] {
   font-size: larger;
 }
 
-.next:hover {
+.Question__btn1:hover,
+.Question__btn2:hover {
   border: 0.3rem solid #fff;
 }
 
-.next_radio {
+/* .next_radio,
+.next_rad {
   display: flex;
   gap: 10px;
   align-items: center;
-}
+} */
 
 .Nest_Button {
   margin-left: 500px;
