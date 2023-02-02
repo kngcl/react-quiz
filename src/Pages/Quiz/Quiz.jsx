@@ -28,7 +28,7 @@ export default function Quiz() {
     posts.length > 0 && (
       <div className="App toll">
         <div className="toll">
-          <p>point:{count}</p>
+          {/*  <p>point:{count}</p> */}
           <h1>Question {page}</h1>
           <h2>Category:{posts[page].category}</h2>
           <p> {posts[page].question.replace(/([^\w ]|_)/g, '')}</p>
