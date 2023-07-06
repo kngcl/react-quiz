@@ -1,14 +1,19 @@
 .quizContent {
-  max-width: 600px;
+  max-width: 50%;
   margin: auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: #06d1c0;
+  padding: 5rem;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px #313030;
 }
 
 body {
-  background-color: #f4f6f6;
+  background-color: #282c34;;
 }
 
 .container {
@@ -17,18 +22,35 @@ body {
   font-weight: 300;
   text-rendering: optimizeLegibility;
   display: flex;
+  flex-wrap: wrap;
   min-height: 600px;
 }
 
-button {
+.tell {
   padding: 1rem 5rem;
-  background: #e77b77;
+  background: #282c34;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: larger;
 }
- button:hover {
-    box-shadow: 2px 2px 2px #444444;
+ .tell:hover {
+    box-shadow: 2px 2px 2px  #fff;;
  }
+
+ @media (prefers-reduced-motion: no-preference) {
+  .tell{
+    animation: App-logo-spin infinite 2s alternate;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(3deg);
+  }
+}
+
